@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "806400968301",
+    "project_id": "pemata-87b27",
+    "storage_bucket": "pemata-87b27.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806400968301:android:f975573b77b056ca51e164",
+        "android_client_info": {
+          "package_name": "com.example.pemata"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC356z36GgwgSaWg7Z3_6-B4-WXBsTap5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

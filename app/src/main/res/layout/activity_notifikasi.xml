@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5EDED"
+    android:padding="16dp">
+
+    <!-- Tombol Back dan Judul -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notifikasi"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginStart="16dp"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <!-- Daftar Notifikasi -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_below="@id/header"
+        android:layout_above="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="60dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Senin -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Senin"
+                android:textStyle="bold"
+                android:textColor="#888888"
+                android:layout_marginTop="16dp" />
+
+            <!-- Kartu Notifikasi -->
+            <include layout="@layout/item_notifikasi" />
+            <include layout="@layout/item_notifikasi" />
+
+            <!-- Kemarin -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kemarin"
+                android:textStyle="bold"
+                android:textColor="#888888"
+                android:layout_marginTop="16dp" />
+
+            <include layout="@layout/item_notifikasi" />
+            <include layout="@layout/item_notifikasi" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#145A32"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <ImageView
+            android:id="@+id/card_soil_monitor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_plant"
+            android:background="@null"
+            android:contentDescription="Penyiraman" />
+
+        <ImageView
+            android:id="@+id/nav_calendar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:contentDescription="Jadwal"
+            android:src="@drawable/ic_calendar"
+            android:tint="#00FF99" />
+
+        <ImageView
+            android:id="@+id/nav_notification"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_notification"
+            android:tint="#FFFFFF"
+            android:background="@null"
+            android:contentDescription="Notifikasi" />
+
+        <ImageView
+            android:id="@+id/nav_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_profil"
+            android:tint="#00FF99"
+            android:background="@null"
+            android:contentDescription="Profil" />
+    </LinearLayout>
+
+</RelativeLayout>
