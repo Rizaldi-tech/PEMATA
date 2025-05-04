@@ -135,15 +135,6 @@
             android:contentDescription="Calendar" />
 
         <ImageView
-            android:id="@+id/nav_notification"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_notification"
-            android:tint="#00FF99"
-            android:contentDescription="Notification" />
-
-        <ImageView
             android:id="@+id/nav_profile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -90,9 +90,6 @@ public class Penyiraman extends AppCompatActivity {
         findViewById(R.id.nav_calendar).setOnClickListener(v ->
                 startActivity(new Intent(this, JadwalActivity.class)));
 
-        findViewById(R.id.nav_notification).setOnClickListener(v ->
-                startActivity(new Intent(this, NotifikasiActivity.class)));
-
         findViewById(R.id.nav_profile).setOnClickListener(v ->
                 startActivity(new Intent(this, ProfilActivity.class)));
 

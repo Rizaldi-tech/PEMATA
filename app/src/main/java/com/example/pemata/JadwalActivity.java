@@ -53,15 +53,6 @@ public class JadwalActivity extends AppCompatActivity {
             }
         });
 
-        ImageView navnotif = findViewById(R.id.nav_notification);
-        navnotif.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(JadwalActivity.this, NotifikasiActivity.class);
-                startActivity(intent);
-            }
-        });
-
         ImageView navprofil = findViewById(R.id.nav_profile);
         navprofil.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -32,29 +32,6 @@
         android:src="@drawable/ic_avatar"
         android:contentDescription="Foto Profil" />
 
-    <!-- Field Nama -->
-    <TextView
-        android:id="@+id/label_nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nama"
-        android:textColor="#000"
-        android:layout_below="@id/profile_image"
-        android:layout_marginTop="24dp" />
-
-    <EditText
-        android:id="@+id/edit_nama"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/label_nama"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/edittext_background"
-        android:hint="Nama"
-        android:text="Andika Putra"
-        android:padding="12dp"
-        android:textColor="#000"
-        android:enabled="false" />
-
     <!-- Field Email -->
     <TextView
         android:id="@+id/label_email"
@@ -62,7 +39,7 @@
         android:layout_height="wrap_content"
         android:text="Email"
         android:textColor="#000"
-        android:layout_below="@id/edit_nama"
+        android:layout_below="@id/profile_image"
         android:layout_marginTop="16dp" />
 
     <EditText
@@ -143,15 +120,6 @@
             android:contentDescription="Calendar"
             android:src="@drawable/ic_calendar"
             android:tint="#00FF99" />
-
-        <ImageView
-            android:id="@+id/nav_notifikasi"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_notification"
-            android:tint="#00FF99"
-            android:contentDescription="Notifikasi" />
 
         <ImageView
             android:id="@+id/nav_profil"

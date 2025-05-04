@@ -193,15 +193,6 @@
             android:tint="#00FF99" />
 
         <ImageView
-            android:id="@+id/nav_notification"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="Notification"
-            android:src="@drawable/ic_notification"
-            android:tint="#00FF99" />
-
-        <ImageView
             android:id="@+id/nav_profile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

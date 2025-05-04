@@ -41,13 +41,8 @@ public class ProfilActivity extends AppCompatActivity {
             return insets;
         });
 
-        editNama = findViewById(R.id.edit_nama);
         editEmail = findViewById(R.id.edit_email);
         logoutButton = findViewById(R.id.btn_logout);
-
-        btnSimpan = new Button(this);
-        btnSimpan.setText("Simpan");
-        ((RelativeLayout) findViewById(R.id.main)).addView(btnSimpan); // Tambah tombol secara dinamis
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -96,6 +91,5 @@ public class ProfilActivity extends AppCompatActivity {
         // Navigasi Bottom
         findViewById(R.id.nav_soil).setOnClickListener(v -> startActivity(new Intent(this, Penyiraman.class)));
         findViewById(R.id.nav_calendar).setOnClickListener(v -> startActivity(new Intent(this, JadwalActivity.class)));
-        findViewById(R.id.nav_notifikasi).setOnClickListener(v -> startActivity(new Intent(this, NotifikasiActivity.class)));
     }
 }
