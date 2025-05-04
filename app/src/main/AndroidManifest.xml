@@ -25,9 +25,6 @@
             android:name=".Penyiraman"
             android:exported="false" />
         <activity
-            android:name=".Dashboard"
-            android:exported="false" />
-        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity

@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.firebase.firestore.FirebaseFirestore;
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +27,9 @@ public class RegisterActivity extends AppCompatActivity {
     private Button buttonDaftar;
     private TextView textMasuk;
     private FirebaseAuth mAuth; // Tambahkan ini
+    private FirebaseFirestore db;
+    private EditText inputNama;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -41,39 +47,55 @@ public class RegisterActivity extends AppCompatActivity {
         // Inisialisasi Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
+        db = FirebaseFirestore.getInstance();
+
         // Inisialisasi komponen UI
+        inputNama = findViewById(R.id.inputNama);
         inputUsername = findViewById(R.id.inputUsername); // Gunakan ini sebagai EMAIL
         inputPassword = findViewById(R.id.inputPassword);
         buttonDaftar = findViewById(R.id.buttonDaftar);
         textMasuk = findViewById(R.id.textMasuk);
 
         // Tombol Daftar
-        buttonDaftar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = inputUsername.getText().toString().trim();
-                String password = inputPassword.getText().toString().trim();
+        buttonDaftar.setOnClickListener(v -> {
+            String nama = inputNama.getText().toString().trim();
+            String email = inputUsername.getText().toString().trim();
+            String password = inputPassword.getText().toString().trim();
 
-                if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(RegisterActivity.this, "Isi semua data terlebih dahulu!", Toast.LENGTH_SHORT).show();
-                } else {
-                    mAuth.createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(task -> {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(RegisterActivity.this, "Berhasil daftar! Silakan login.", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                                    finish();
-                                } else {
-                                    String message = "Gagal daftar!";
-                                    if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                                        message = "Email sudah terdaftar.";
-                                    } else if (task.getException() != null) {
-                                        message = task.getException().getMessage();
-                                    }
-                                    Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
+            if (nama.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(RegisterActivity.this, "Isi semua data terlebih dahulu!", Toast.LENGTH_SHORT).show();
+            } else {
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                String userId = mAuth.getCurrentUser().getUid();
+
+                                // Simpan ke Firestore
+                                Map<String, Object> userMap = new HashMap<>();
+                                userMap.put("nama", nama);
+                                userMap.put("email", email);
+
+                                db.collection("Users").document(userId)
+                                        .set(userMap)
+                                        .addOnSuccessListener(aVoid -> {
+                                            Toast.makeText(RegisterActivity.this, "Berhasil daftar!", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                            finish();
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            Toast.makeText(RegisterActivity.this, "Gagal simpan data user", Toast.LENGTH_SHORT).show();
+                                        });
+
+                            } else {
+                                String message = "Gagal daftar!";
+                                if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                    message = "Email sudah terdaftar.";
+                                } else if (task.getException() != null) {
+                                    message = task.getException().getMessage();
                                 }
-                            });
-                }
+                                Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
 

@@ -22,8 +22,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Tombol Kembali -->
-
             <!-- Kartu Status Penyiraman -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -76,17 +74,9 @@
                         android:textColor="#000000"
                         android:textStyle="bold" />
 
-                    <Switch
-                        android:id="@+id/switch_pompa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textOn="On"
-                        android:textOff="Off"
-                        android:checked="true"
-                        android:layout_marginTop="8dp" />
                 </LinearLayout>
 
-                <!-- Card Pie Chart -->
+                <!-- Card PH Chart -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -97,9 +87,10 @@
                     android:elevation="2dp">
 
                     <TextView
+                        android:id="@+id/ph_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="5.6PH"
+                        android:text="0 %"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal" />
@@ -107,41 +98,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kelembaban Tanah"
+                        android:text="Kelembapan Tanah"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="8dp" />
                 </LinearLayout>
             </LinearLayout>
 
             <!-- Mode Manual dan Otomatis -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginTop="16dp">
-
-                <Button
-                    android:id="@+id/btn_manual"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/manual_button_bg"
-                    android:backgroundTint="#B11313"
-                    android:elevation="2dp"
-                    android:text="Manual"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_otomatis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/otomatis_button_bg"
-                    android:backgroundTint="#20854A"
-                    android:elevation="2dp"
-                    android:text="Otomatis"
-                    android:textColor="#000000"/>
-            </LinearLayout>
 
             <!-- Log Penyiraman -->
             <LinearLayout
@@ -167,39 +130,19 @@
                     android:layout_height="wrap_content">
 
                     <TableRow>
-                        <TextView
-                            android:layout_weight="1"
-                            android:text="Tanggal" />
-                        <TextView
-                            android:layout_weight="1"
-                            android:text="Mode" />
-                        <TextView
-                            android:layout_weight="1"
-                            android:text="Hasil" />
+                        <TextView android:layout_weight="1" android:text="Tanggal" />
+                        <TextView android:layout_weight="1" android:text="Mode" />
+                        <TextView android:layout_weight="1" android:text="Hasil" />
                     </TableRow>
-
                     <TableRow>
-                        <TextView
-                            android:layout_weight="1"
-                            android:text="11 April 2025" />
-                        <TextView
-                            android:layout_weight="1"
-                            android:text="Manual" />
-                        <TextView
-                            android:layout_weight="1"
-                            android:text="Berhasil" />
+                        <TextView android:layout_weight="1" android:text="11 April 2025" />
+                        <TextView android:layout_weight="1" android:text="Manual" />
+                        <TextView android:layout_weight="1" android:text="Berhasil" />
                     </TableRow>
-
                     <TableRow>
-                        <TextView
-                            android:layout_weight="1"
-                            android:text="10 April 2025" />
-                        <TextView
-                            android:layout_weight="1"
-                            android:text="Otomatis" />
-                        <TextView
-                            android:layout_weight="1"
-                            android:text="Berhasil" />
+                        <TextView android:layout_weight="1" android:text="10 April 2025" />
+                        <TextView android:layout_weight="1" android:text="Otomatis" />
+                        <TextView android:layout_weight="1" android:text="Berhasil" />
                     </TableRow>
                 </TableLayout>
             </LinearLayout>

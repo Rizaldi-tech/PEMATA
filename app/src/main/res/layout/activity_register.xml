@@ -21,7 +21,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Username -->
+    <!-- Nama Pengguna -->
+    <EditText
+        android:id="@+id/inputNama"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="nama"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#DDDDDD"
+        android:padding="12dp"
+        android:background="@drawable/edittext_background"
+        app:layout_constraintTop_toBottomOf="@id/registerImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Email -->
     <EditText
         android:id="@+id/inputUsername"
         android:layout_width="0dp"
@@ -31,7 +46,7 @@
         android:backgroundTint="#DDDDDD"
         android:padding="12dp"
         android:background="@drawable/edittext_background"
-        app:layout_constraintTop_toBottomOf="@id/registerImage"
+        app:layout_constraintTop_toBottomOf="@id/inputNama"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.8" />
