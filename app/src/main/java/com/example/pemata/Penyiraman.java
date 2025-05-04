@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,9 @@ public class Penyiraman extends AppCompatActivity {
     private Switch switchPompa;
     private Button btnManual, btnOtomatis;
     private TextView phText;
+    private SeekBar seekThreshold;
+    private TextView textThreshold;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +42,16 @@ public class Penyiraman extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        // Inisialisasi View
+// Inisialisasi View
         phText = findViewById(R.id.ph_text);
+        seekThreshold = findViewById(R.id.seek_threshold);
+        textThreshold = findViewById(R.id.text_threshold);
 
-        // Firebase reference
+// Firebase reference
         DatabaseReference kelembabanRef = FirebaseDatabase.getInstance(
                 "https://pemata-87b27-default-rtdb.asia-southeast1.firebasedatabase.app/"
         ).getReference("sensor/soil_moisture");
 
-        // Listener Firebase
         kelembabanRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -65,8 +69,24 @@ public class Penyiraman extends AppCompatActivity {
             }
         });
 
+// Listener SeekBar
+        seekThreshold.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                textThreshold.setText("Ambang batas: " + progress + " %");
 
-        // Navigasi Bottom Nav
+                DatabaseReference thresholdRef = FirebaseDatabase.getInstance(
+                        "https://pemata-87b27-default-rtdb.asia-southeast1.firebasedatabase.app/"
+                ).getReference("control/threshold");
+
+                thresholdRef.setValue(progress);
+            }
+
+            @Override public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+// Bottom Navigation
         findViewById(R.id.nav_calendar).setOnClickListener(v ->
                 startActivity(new Intent(this, JadwalActivity.class)));
 
